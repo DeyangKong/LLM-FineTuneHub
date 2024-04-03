@@ -1,0 +1,22 @@
+screen -dmS training_session bash -c "accelerate launch --config_file /root/autodl-tmp/kdy/finetune/config.yaml src/train_bash.py \
+    --stage sft \
+    --do_train \
+    --quantization_bit 4 \
+    --model_name_or_path /root/autodl-tmp/models/Qwen1.5-7B-Chat \
+    --dataset deepl_combined_long_conversation \
+    --template qwen \
+    --finetuning_type lora \
+    --lora_target q_proj,v_proj,k_proj,o_proj,gate_proj,up_proj,down_proj \
+    --output_dir /root/autodl-tmp/models/Qwen-translator-adapter \
+    --overwrite_cache \
+    --per_device_train_batch_size 4 \
+    --gradient_accumulation_steps 4 \
+    --lr_scheduler_type cosine \
+    --logging_steps 10 \
+    --save_steps 1000 \
+    --learning_rate 3e-5 \
+    --num_train_epochs 10 \
+    --plot_loss \
+    --bf16 \
+    --max_new_tokens 2048 \
+    --repetition_penalty 1.2 > /root/autodl-tmp/kdy/finetune/logs/sft_train.log 2>&1"
