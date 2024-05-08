@@ -1,6 +1,6 @@
 # LLM-FineTuneHub
 
-Details about training and evaluation LLM.
+Details about training, fine-tuing and evaluating LLM.
 
 ## SFT-train
 
