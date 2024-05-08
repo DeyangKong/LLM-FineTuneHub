@@ -1,0 +1,22 @@
+screen -dmS training_session bash -c "accelerate launch --config_file /root/autodl-tmp/kdy/finetune/config.yaml src/train_bash.py \
+    --stage sft \
+    --do_train \
+    --model_name_or_path /root/autodl-tmp/models/Meta-Llama-3-8B-Instruct \
+    --dataset example_translation_dataset \
+    --template llama3 \
+    --finetuning_type lora \
+    --lora_target q_proj,v_proj,k_proj,o_proj,gate_proj,up_proj,down_proj \
+    --output_dir /root/autodl-tmp/models/Llama-3-translator-adapter \
+    --overwrite_cache \
+    --per_device_train_batch_size 2 \
+    --gradient_accumulation_steps 4 \
+    --lr_scheduler_type cosine \
+    --logging_steps 10 \
+    --save_steps 2000 \
+    --learning_rate 2e-5 \
+    --num_train_epochs 3 \
+    --plot_loss \
+    --bf16 \
+    --temperature 0.5 \
+    --top_p 0.95 \
+    --max_new_tokens 4096 > /root/autodl-tmp/kdy/finetune/logs/Llama-3_train.log 2>&1"

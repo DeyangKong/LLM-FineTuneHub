@@ -1,5 +1,12 @@
 # TransLingoBridge
 
-Details about training and evaluation LLM to make them a translator.
+Details about training and evaluation LLM.
 
-model page: [Qwen1.5-7B-Translator](https://huggingface.co/DeyangKong/Qwen1.5-7B-Translator)
+## SFT-train
+
+Information about SFT (Supervised Fine-Tuning). We trained Qwen and Llama model, trying to make them adapt to sentence translation task.
+
+
+## evaluation
+
+Using strong LLM to access the generation quality of LLM.

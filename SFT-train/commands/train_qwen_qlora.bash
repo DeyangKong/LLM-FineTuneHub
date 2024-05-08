@@ -3,7 +3,7 @@ screen -dmS training_session bash -c "accelerate launch --config_file /root/auto
     --do_train \
     --quantization_bit 4 \
     --model_name_or_path /root/autodl-tmp/models/Qwen1.5-7B-Chat \
-    --dataset deepl_combined_long_conversation \
+    --dataset example_translation_dataset \
     --template qwen \
     --finetuning_type lora \
     --lora_target q_proj,v_proj,k_proj,o_proj,gate_proj,up_proj,down_proj \
